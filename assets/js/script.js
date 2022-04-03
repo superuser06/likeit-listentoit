@@ -5,15 +5,19 @@
 // Registered to	luizmedina87
 
 class Artist {
-  constructor(artistData, similarArtists=null) {
+  constructor(artistData, similarArtists=null, similarityIndex=null, lastFmUrl="") {
     this.name = artistData.strArtist;
     this.genre = artistData.strGenre;
     this.style = artistData.strStyle;
     this.mood = artistData.strMood;
+    this.origin = artistData.strCountry;
     this.thumb = artistData.strArtistThumb;
     this.wideThumb = artistData.strArtistWideThumb;
+    this.similarityIndex = similarityIndex;
+    this.lastFmUrl = lastFmUrl;
     if (similarArtists) {
       this.similar = similarArtists;
+      console.log(artistData);
       console.log(similarArtists);
     }
   }
@@ -34,35 +38,34 @@ async function searchArtist(artistStr, explode=true) {
     + `&limit=6`
     + `&format=json`
   );
-  // if it is the main artist, you want to find similars, so run both
+  // making API calls
+  const [audioDbResponse, lastFmResponse] = await Promise.all([
+    fetch(apiAudioDb),
+    fetch(apiLastFm)
+  ]);
+  const [audioDbJson, lastFmJson] = await Promise.all([
+    audioDbResponse.json(),
+    lastFmResponse.json()
+  ])
+  const [audioDbData, lastFmData] = await Promise.all([
+    audioDbJson,
+    lastFmJson
+  ])
+  // using API data to create object
+  var similarArtistsData = lastFmData.similarartists.artist;
+  var searchedArtistData = audioDbData.artists[0];
   if (explode) {
-    // making API calls
-    const [audioDbResponse, lastFmResponse] = await Promise.all([
-      fetch(apiAudioDb),
-      fetch(apiLastFm)
-    ]);
-    const [audioDbJson, lastFmJson] = await Promise.all([
-      audioDbResponse.json(),
-      lastFmResponse.json()
-    ])
-    const [audioDbData, lastFmData] = await Promise.all([
-      audioDbJson,
-      lastFmJson
-    ])
-    // using API data to create object
-    var similarArtistsData = lastFmData.similarartists.artist;
+    var similarArtistObjs = [...Array(similarArtistsData.length)];
     for (let i = 0; i < similarArtistsData.length; i++) {
-      similarArtistsData[i] = await searchArtist(similarArtistsData[i].name, false);
+      similarArtistObjs[i] = await searchArtist(similarArtistsData[i].name, false);
+      similarArtistObjs[i].similarityIndex = similarArtistsData[i].match;
+      similarArtistObjs[i].lastFmUrl = similarArtistsData[i].url;
     }
-    var searchedArtistData = audioDbData.artists[0];
-    searchedArtist = new Artist(searchedArtistData, similarArtistsData);
+    // console.log(similarArtistObjs);
+    searchedArtist = new Artist(searchedArtistData, similarArtistObjs);
+    // ELEMENT CREATION SHOULD GO HERE
   }
-  // if it is a similar artist, just find its data, so run audioDb's api
   else {
-    const audioDbResponse = await fetch(apiAudioDb);
-    const audioDbJson = await audioDbResponse.json();
-    const audioDbData = await audioDbJson;
-    var searchedArtistData = audioDbData.artists[0];
     var similarArtist = new Artist(searchedArtistData);
     return similarArtist;
   }
@@ -71,3 +74,19 @@ async function searchArtist(artistStr, explode=true) {
 // example search
 var userInput = `coldplay`; // CHANGE HERE TO LINK WITH HTML INPUT
 searchArtist(userInput);
+
+// teste(userInput);
+// function teste(x) {
+//   // var getTasteUrl = `http://api.deezer.com/playlist/580739065?output=jsonp`;
+//   var getTasteUrl = `https://api.deezer.com/search?q=eminem?output=jsonp`;
+//   // var getTasteUrl = `https://api.deezer.com/oembed?url=https://www.deezer.com/album/302127&maxwidth=700&maxheight=300&tracklist=true&format=json&output=json`
+//   $.ajax({
+// 		url: getTasteUrl,
+// 		type: 'GET', 
+// 		// data: {
+// 		// 	q: x,
+//     //   output: jsonp
+// 		// },
+// 		dataType: "jsonp"
+// 	}).then(resp=>console.log(resp));
+// }
