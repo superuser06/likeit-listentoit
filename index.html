@@ -4,55 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Like it? Listen to it!</title>
 </head>
 <body>
-    <!-- search input -->
-    <form>
-        <label for="search-artist">Find your next Band</label>
-        <input type="text" id="search-artist" name="search-artist">
-        <button id="search-btn">Go!</button>
-    </form>
-    <button id="continue-btn">Continue where you left off</button>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
-    <script src="./assets/js/script.js"></script>
-    <div id="matches">
-        <a href="https://www.last.fm/music/Travis" target="_blank">
-            <div id="travis-div">
-                <p>Travis</p>
-                <p>72%</p>
+    <div class="header">
+        <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+            <a class="pure-menu-heading" href="">Like it? Listen to it!</a>
+    
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log In</a></li>
+            </ul>
+        </div>
+    </div> 
+
+    <div class="splash-container">
+        <div class="splash">
+            <h1 class="splash-head">Find your next</h1>
+            <div class="splash-subhead">
+                <form class="pure-form">
+                    <fieldset>
+                    <label for="search-artist">Find your next Band</label>
+                    <input type="text" id="search-artist" name="search-artist" placeholder="Search for music">
+                    <button id="search-btn" class="pure-button pure-button-primary" type="submit" >Go!</button>
+                </fieldset>
+                </form>
             </div>
-        </a>
-        <a href="https://www.last.fm/music/Travis" target="_blank">
-            <div id="travis-div">
-                <p>Travis</p>
-                <p>72%</p>
-            </div>
-        </a>
-        <a href="https://www.last.fm/music/Travis" target="_blank">
-            <div id="travis-div">
-                <p>Travis</p>
-                <p>72%</p>
-            </div>
-        </a>
-        <a href="https://www.last.fm/music/Travis" target="_blank">
-            <div id="travis-div">
-                <p>Travis</p>
-                <p>72%</p>
-            </div>
-        </a>
-        <a href="https://www.last.fm/music/Travis" target="_blank">
-            <div id="travis-div">
-                <p>Travis</p>
-                <p>72%</p>
-            </div>
-        </a>
-        <a href="https://www.last.fm/music/Travis" target="_blank">
-            <div id="travis-div">
-                <p>Travis</p>
-                <p>72%</p>
-            </div>
-        </a>
+          
+            <p>
+                <a href="http://purecss.io" id="continue-btn" class="pure-button pure-button-primary">Continue where you left off</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer l-box is-center">
+        View the source of this layout to learn more. Made with love by the Pure Team.
     </div>
     
 </body>
