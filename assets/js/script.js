@@ -3,6 +3,21 @@
 // API key	53346310a0cd2a63988f37c9d6e8a02e
 // Shared secret	768cc7db0209fa3814852919df6a8f63
 // Registered to	luizmedina87
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.querySelector(".splash-container");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 2000); 
+}
 
 class Artist {
   constructor(artistData, similarArtists=null, similarityIndex=null, lastFmUrl="") {
