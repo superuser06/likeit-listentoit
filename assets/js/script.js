@@ -21,8 +21,32 @@ class Artist {
       console.log(similarArtists);
     }
   }
+  createHtmlElements() {
+    for (let i = 0; i < this.similar.length; i++) {
+      // debugger;
+      var artist = this.similar[i];
+      // creating element
+      var cardNameEl = document.createElement("p");
+      cardNameEl.textContent = artist.name;
+      var similarityEl = document.createElement("p");
+      similarityEl.textContent = artist.similarityIndex;
+      var cardDivEl= document.createElement("div");
+      cardDivEl
+        .setAttribute("id", `${artist.name}-div`)
+        .appendChild(cardNameEl)
+        .appendChild(similarityEl);
+      var capsuleCardEl = document.createElement("a");
+      capsuleCardEl
+        .setAttribute("href", `${artist.lastFmUrl}`)
+        .setAttribute("target", "_blank")
+        .appendChild(cardDivEl);
+      // appending element
+      var matchesEl = document.getElementById("matches");
+      matchesEl.appendChild(capsuleCardEl);
+      console.log(i);
+    }
+  }
 }
-
 
 async function searchArtist(artistStr, explode=true) {
   // creating the url of the apis to get the artist data
@@ -62,8 +86,9 @@ async function searchArtist(artistStr, explode=true) {
       similarArtistObjs[i].lastFmUrl = similarArtistsData[i].url;
     }
     // console.log(similarArtistObjs);
-    searchedArtist = new Artist(searchedArtistData, similarArtistObjs);
-    // ELEMENT CREATION SHOULD GO HERE
+    var searchedArtist = new Artist(searchedArtistData, similarArtistObjs);
+    // searchedArtist.createHtmlElements(); // FIX HERE
+    pushArtist(searchedArtist.name);
   }
   else {
     var similarArtist = new Artist(searchedArtistData);
@@ -71,22 +96,40 @@ async function searchArtist(artistStr, explode=true) {
   }
 }
 
-// example search
-var userInput = `coldplay`; // CHANGE HERE TO LINK WITH HTML INPUT
-searchArtist(userInput);
+function pushArtist(artistName) {
+  var artistsPile = localStorage.getItem("artistsPile");
+  artistsPile = JSON.parse(artistsPile);
+  if (!artistsPile) {
+    artistsPile = [artistName];
+  }
+  else {
+    artistsPile.push(artistName);
+  }
+  localStorage.setItem("artistsPile", JSON.stringify(artistsPile));
+}
 
-// teste(userInput);
-// function teste(x) {
-//   // var getTasteUrl = `http://api.deezer.com/playlist/580739065?output=jsonp`;
-//   var getTasteUrl = `https://api.deezer.com/search?q=eminem?output=jsonp`;
-//   // var getTasteUrl = `https://api.deezer.com/oembed?url=https://www.deezer.com/album/302127&maxwidth=700&maxheight=300&tracklist=true&format=json&output=json`
-//   $.ajax({
-// 		url: getTasteUrl,
-// 		type: 'GET', 
-// 		// data: {
-// 		// 	q: x,
-//     //   output: jsonp
-// 		// },
-// 		dataType: "jsonp"
-// 	}).then(resp=>console.log(resp));
-// }
+function popArtist() {
+  var artistsPile = localStorage.getItem("artistsPile");
+  artistsPile = JSON.parse(artistsPile);
+  console.log("here");
+  if (!artistsPile) {
+    console.log("no artists to pop")
+  }
+  else {
+    var poppedArtist = artistsPile.pop();
+    localStorage.setItem("artistsPile", JSON.stringify(artistsPile));
+    return poppedArtist;
+  }
+}
+
+document.getElementById(`search-btn`).addEventListener("click", function(event) {
+  event.preventDefault();
+  var userInput = document.getElementById(`search-artist`).value;
+  searchArtist(userInput);
+});
+
+// BTN SHOULD ONLY SHOW IF LOCAL STORAGE EXISTS
+document.getElementById(`continue-btn`).addEventListener("click", function(event) {
+  event.preventDefault();
+  console.log(popArtist());
+})
