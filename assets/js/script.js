@@ -4,19 +4,28 @@
 // Shared secret	768cc7db0209fa3814852919df6a8f63
 // Registered to	luizmedina87
 let slideIndex = 0;
+const imageURL=[
+  "./assets/images/image-1.jpg",
+  "./assets/images/image-2.jpg",
+  "./assets/images/image-3.jpg",
+  "./assets/images/image-4.jpg",
+  "./assets/images/image-5.jpg",
+  "./assets/images/image-6.jpg"
+]
 showSlides();
 
 function showSlides() {
-  let i;
   let slides = document.querySelector(".splash-container");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
   
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 2000); 
+    slides.style.display = "none";  
+    slides.style.backgroundImage = "url(" + imageURL[slideIndex] + ")";
+    //console.log(slides[i]);
+  
+  slideIndex++;
+  if (slideIndex > imageURL.length-1) {slideIndex = 0}    
+  
+  slides.style.display = "block";  
+  setTimeout(showSlides, 5000); 
 }
 
 class Artist {
