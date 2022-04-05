@@ -90,7 +90,6 @@ class Artist {
   }
 }
 
-// CREATE TRY CATCH
 async function searchArtist(artistStr, explode=true, storeArtist=false) {
   try {
     // cleaning up string
