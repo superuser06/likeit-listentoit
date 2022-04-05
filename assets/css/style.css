@@ -179,3 +179,22 @@ a.pure-button-primary {
         font-size: 300%;
     }
 }
+
+.card-header, .band-image, .card-section {
+    text-align: center;
+}
+
+.card {
+    margin: 20px auto;
+    max-width: 60%;
+}
+
+.grid-x {
+    margin: 0 40px 20px 40px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+
