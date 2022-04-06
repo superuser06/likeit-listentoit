@@ -27,7 +27,7 @@ function showSlides() {
   if (slideIndex > imageURL.length-1) {slideIndex = 0}    
   
   slides.style.display = "block";  
-  setTimeout(showSlides, 6000); 
+  setTimeout(showSlides, 5500); 
 }
 
 class Artist {
