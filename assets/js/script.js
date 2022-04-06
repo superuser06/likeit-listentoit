@@ -6,11 +6,13 @@
 let slideIndex = 0;
 const imageURL=[
   "./assets/images/image-1.jpg",
-  "./assets/images/image-2.jpg",
   "./assets/images/image-3.jpg",
   "./assets/images/image-4.jpg",
-  "./assets/images/image-5.jpg",
-  "./assets/images/image-6.jpg"
+  "./assets/images/image-6.jpg",
+  "./assets/images/image-7.jpeg",
+  "./assets/images/image-10.jpg",
+  "./assets/images/image-11.jpeg"
+  
 ]
 showSlides();
 
@@ -25,7 +27,7 @@ function showSlides() {
   if (slideIndex > imageURL.length-1) {slideIndex = 0}    
   
   slides.style.display = "block";  
-  setTimeout(showSlides, 5000); 
+  setTimeout(showSlides, 6000); 
 }
 
 class Artist {
