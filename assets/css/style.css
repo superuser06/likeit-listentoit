@@ -62,15 +62,16 @@ a.pure-button-primary {
     font-size: 120%;
 }
 
-
 .home-menu {
     padding: 0.5em;
     text-align: center;
     box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
 }
+
 .home-menu {
-     background: #2d3e50; 
+    background: #2d3e50; 
 }
+
 .pure-menu.pure-menu-fixed {
     border-bottom: none;
 }
@@ -90,6 +91,7 @@ a.pure-button-primary {
 .home-menu a {
     color: orange;
 }
+
 .home-menu li a:hover,
 .home-menu li a:focus {
     background: none;
@@ -97,23 +99,20 @@ a.pure-button-primary {
     color: white;
 }
 
-
 .splash-container {
-   
+    background-color: black;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-position: 80%;
     height: calc(100vh - 94px);
+    transition: 1s;
 }
-
 
 .splash {
     text-align: center;
     margin: auto;
     /* text-transform: uppercase; */
-   
-
 }
 
 .splash-head {
@@ -139,31 +138,27 @@ a.pure-button-primary {
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
-  }
+}
   
-  @keyframes fade {
+@keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}
-  }
-
+}
 
 @media (min-width: 48em) {
-
-    
     body {
         font-size: 16px;
     }
-
    
     .home-menu {
         text-align: left;
         
     }
-        .home-menu ul {
-            float: right;
-        }
 
-    
+    .home-menu ul {
+        float: right;
+    }
+
     .splash {
         width: 50%;
         height: 50%;
@@ -172,13 +167,10 @@ a.pure-button-primary {
     .splash-head {
         font-size: 250%;
     }
-    
-
 }
 
 
 @media (min-width: 78em) {
-  
     .splash-head {
         font-size: 300%;
     }

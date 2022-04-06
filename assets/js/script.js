@@ -1,27 +1,27 @@
+// This part just deals with the background images
 let slideIndex = 0;
-const imageURL=[
-  "./assets/images/image-1.jpg",
-  "./assets/images/image-2.jpg",
-  "./assets/images/image-3.jpg",
-  "./assets/images/image-4.jpg",
-  "./assets/images/image-5.jpg",
-  "./assets/images/image-6.jpg"
-]
-showSlides();
-
 function showSlides() {
+  const imageURL=[
+    "./assets/images/image-1.jpg",
+    "./assets/images/image-2.jpg",
+    "./assets/images/image-3.jpg",
+    "./assets/images/image-4.jpg",
+    "./assets/images/image-5.jpg",
+    "./assets/images/image-6.jpg"
+  ]
   let slides = document.querySelector(".splash-container");
-  
-    slides.style.display = "none";  
-    slides.style.backgroundImage = "url(" + imageURL[slideIndex] + ")";
-  
+  slides.style.backgroundImage = `url(${imageURL[slideIndex]})`;
   slideIndex++;
-  if (slideIndex > imageURL.length-1) {slideIndex = 0}    
+  if (slideIndex > imageURL.length-1) {
+    slideIndex = 0
+  };
   
   slides.style.display = "block";  
   setTimeout(showSlides, 5000); 
 }
+showSlides();
 
+// This is the class that holds the artist info
 class Artist {
   constructor(artistData, similarArtists=null, similarityIndex=null, lastFmUrl="") {
     this.name = artistData.strArtist;
@@ -240,6 +240,14 @@ function makeBackBtn() {
       // gets the previous one and searches it again
       searchArtist(popArtist(), true, true);
     });
+  }
+  else {
+    try {
+      document.getElementById("back-btn").remove();
+    }
+    catch {
+      console.log("no back button to remove");
+    }
   }
 }
 
