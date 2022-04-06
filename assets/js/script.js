@@ -196,7 +196,8 @@ function readLastArtist() {
 function makeContinueBtn() {
   var artistsPile = localStorage.getItem("artistsPile");
   artistsPile = JSON.parse(artistsPile);
-  if (artistsPile) {
+  // debugger;
+  if ((artistsPile === "[]" || artistsPile)) {
     var formHolderEl = document.getElementById("form-holder");
     var pBtnEl = document.createElement("p");
     pBtnEl.innerHTML = `<a href="#" id="continue-btn" class="pure-button pure-button-primary">Continue where you left off</a>`;
