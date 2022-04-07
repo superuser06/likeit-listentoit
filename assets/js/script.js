@@ -50,7 +50,7 @@ class Artist {
       var artist = this.similar[i];
       // creating element
       var capsuleCardEl = document.createElement("div");
-      capsuleCardEl.className = "cell auto";
+      capsuleCardEl.className = "cell small-4";
       capsuleCardEl.innerHTML = (
         `
         <div class="card">
