@@ -68,19 +68,19 @@ class Artist {
           </div>
           <div class="buttons">
             <!-- play button -->
-            <button type="button">
+            <button type="button" class="navigation-btn">
               <a href="${artist.lastFmUrl}" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                   <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
                 </svg>
               </a>
             </button>
             <!-- explore button -->
-            <button type="button" onclick="searchArtist('${artist.name}', true, true)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-plus" viewBox="0 0 16 16">
+            <button type="button" onclick="searchArtist('${artist.name}', true, true)" class="navigation-btn">
+              <a><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-node-plus" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M11 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM6.025 7.5a5 5 0 1 1 0 1H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025zM11 5a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 11 5zM1.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
-              </svg>
+              </svg></a>
             </button>
           </div>
         </div>
@@ -92,6 +92,7 @@ class Artist {
 }
 
 async function searchArtist(artistStr, explode=true, storeArtist=false) {
+  document.getElementById("search-btn").textContent = "Go!"
   try {
     // cleaning up string
     var urlArtistStr = encodeURIComponent(artistStr.trim().toLowerCase());
@@ -115,6 +116,7 @@ async function searchArtist(artistStr, explode=true, storeArtist=false) {
     ]);
     if (!(audioDbResponse.ok && lastFmResponse.ok)) {
       console.log(`audioDbResponse.status: ${audioDbResponse.status} and lastFmResponse.status ${lastFmResponse.status}`);
+      document.getElementById("search-btn").textContent = "Sorry, we couldnt find that! Try again."
     }
     const [audioDbJson, lastFmJson] = await Promise.all([
       audioDbResponse.json(),
@@ -154,6 +156,7 @@ async function searchArtist(artistStr, explode=true, storeArtist=false) {
   }
   catch {
     console.log("went into catch on searchArtist.");
+    document.getElementById("search-btn").textContent = "Sorry, we couldnt find that! Try again."
   }
 }
 
@@ -197,8 +200,14 @@ function readLastArtist() {
 function makeContinueBtn() {
   var artistsPile = localStorage.getItem("artistsPile");
   artistsPile = JSON.parse(artistsPile);
-  // debugger;
-  if ((artistsPile === "[]" || artistsPile)) {
+  try {
+    if (artistsPile.length == 0) {
+      artistsPile = null;
+    }
+  }
+  catch{
+  }
+  if (artistsPile) {
     var formHolderEl = document.getElementById("form-holder");
     var pBtnEl = document.createElement("p");
     pBtnEl.innerHTML = `<a href="#" id="continue-btn" class="pure-button pure-button-primary">Continue where you left off</a>`;
