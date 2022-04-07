@@ -5,19 +5,20 @@ function showSlides() {
     "./assets/images/image-1.jpg",
     "./assets/images/image-3.jpg",
     "./assets/images/image-4.jpg",
-    "./assets/images/image-6.jpg",
     "./assets/images/image-7.jpeg",
     "./assets/images/image-10.jpg",
     "./assets/images/image-11.jpeg"
   ]
-  let slides = document.querySelector(".splash-container");
-  slides.style.backgroundImage = `url(${imageURL[slideIndex]})`;
+  // let slides = document.querySelector(".splash-container");
+  // slides.style.backgroundImage = `url(${imageURL[slideIndex]})`;
+  document.body.style.background = `url(${imageURL[slideIndex]})`;
+  console.log("background")
   slideIndex++;
   if (slideIndex > imageURL.length-1) {
     slideIndex = 0
   };
-  
-  slides.style.display = "block";  
+  // document.body.style.display = "block";
+  // slides.style.display = "block";  
   setTimeout(showSlides, 15000); 
 }
 showSlides();
