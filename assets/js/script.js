@@ -93,7 +93,7 @@ class Artist {
 }
 
 async function searchArtist(artistStr, explode=true, storeArtist=false) {
-  document.getElementById("search-btn").textContent = "Go!"
+  document.getElementById("search-btn").textContent = "GO!"
   try {
     // cleaning up string
     var urlArtistStr = encodeURIComponent(artistStr.trim().toLowerCase());
@@ -211,7 +211,7 @@ function makeContinueBtn() {
   if (artistsPile) {
     var formHolderEl = document.getElementById("form-holder");
     var pBtnEl = document.createElement("p");
-    pBtnEl.innerHTML = `<a href="#" id="continue-btn" class="pure-button pure-button-primary">Continue where you left off</a>`;
+    pBtnEl.innerHTML = `<a href="#" id="continue-btn" class="pure-button pure-button-primary">Continue where you left off...</a>`;
     formHolderEl.appendChild(pBtnEl);
     // lets the user continue where he left off
     document.getElementById(`continue-btn`).addEventListener("click", function(event) {

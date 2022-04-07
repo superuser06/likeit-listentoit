@@ -35,7 +35,12 @@ label {
 }
 
 .bi {
-    color: white !important;
+    color: #ee6331 !important;
+    margin: 0 5px;
+}
+
+.bi:hover {
+    color: white!important;
 }
 
 .l-box {
@@ -65,17 +70,33 @@ label {
 }
 
 .pure-button {
-    background-color: orange;
+    background-color: #ee6331;
     color: white;
     padding: 0.5em 2em;
     border-radius: 5px;
+    font-weight: bolder !important;
+    font-family: 'Josefin Slab', serif;
+    font-size: larger;
+}
+
+input {
+    font-family: 'Josefin Slab', serif !important;
+    color: black;
+    font-size: x-large !important;
+    font-weight: bolder !important;
 }
 
 a.pure-button-primary {
-    background: white;
-    color: orange;
+    background: none;
+    color: white;
     border-radius: 5px;
+    border-color: white !important;
     font-size: 120%;
+}
+
+a.pure-button-primary:hover {
+    background: white;
+    color: #ee6331;
 }
 
 .home-menu {
@@ -94,18 +115,22 @@ a.pure-button-primary {
 
 .home-menu .pure-menu-heading {
     color: white;
-    font-weight: 400;
-    font-size: 150%;
-    padding-left: 0;
-    padding-top: 7px;
+    font-size: 32px !important;
+    margin: auto !important;
+    padding-top: 20px !important;
+    font-family: 'Josefin Slab', serif !important;
 }
 
-.home-menu .pure-menu-selected a {
-    color: white;
+.pure-menu-link {
+    padding-top: 15px !important;
+}
+
+.grid-container {
+    margin-top: 200px !important;
 }
 
 .home-menu a {
-    color: orange;
+    color: #ee6331;
 }
 
 .home-menu li a:hover,
@@ -132,8 +157,10 @@ a.pure-button-primary {
 }
 
 .splash-head {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 80px !important;
+    font-weight: bolder !important;
+    letter-spacing: 5px !important;
+    font-family: 'Six Caps', sans-serif !important;
     color: white;
     padding-top: 2em;
     font-weight: 100;
@@ -149,20 +176,30 @@ a.pure-button-primary {
 
 h4 {
     text-align: center;
-    color: orange;
+    color: #ee6331;
 }
 
 .card-section {
     text-align: center;
+    font-family: 'Josefin Slab', serif;
+    font-weight: bold;
+}
+
+.card-header h4 {
+    font-family: 'Six Caps', sans-serif !important;
+    letter-spacing: 5px;
+    font-weight: bolder;
+    font-size: 40px;
 }
 
 .card {
-    background-color: black;
-    color: white;
+    background-color: #2e3f50;
+    color: white;    
 }
 
 .buttons {
     text-align: center;
+    opacity: 1 !important;
 }
 
 .navigation-btn {
