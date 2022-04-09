@@ -1,23 +1,28 @@
 #  LIKE IT? LISTEN TO IT!
-
+### Project 1: Interactive Front-End Project
+### Team 06
+# 
 ## Purpose
-A website that allows users to search for music they like and which will show similar artists as well as related tracks based on their search. They can also pick up from their last search and listen to music. 
+A applicaton that allows a user to input an artist and find similar artists to explore. The Application allows the user to also preview some music, or continue to search for other artists dynamically.
+
+## Current Status
+This website was designed to be demonstrated as an MVP. (Minimal Viable Product.) In the future, with more knoweldege and experience, different functionality can be added.
+
+
+## Website
+https://superuser06.github.io/likeit-listentoit/
 
 ## Built With
 * HTML
 * CSS
 * Javascript
 * Pure CSS
-* Server-side API's
-* https://www.theaudiodb.com/api/v1/json/2/search.php?s=travis
-* https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=travis&api_key=53346310a0cd2a63988f37c9d6e8a02e&limit=6&format=json
+* Audio DB API
+* LastFM API
 * Bootstrap Icons
 
 ## Screenshot
 ![Screenshot](./assets/images/likeit-listentoit.gif)
-
-## Website
-https://superuser06.github.io/likeit-listentoit/
 
 ## Contribution
 Made with ❤️ by Team6
