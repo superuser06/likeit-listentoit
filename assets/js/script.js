@@ -51,38 +51,40 @@ class Artist {
       var artist = this.similar[i];
       // creating element
       var capsuleCardEl = document.createElement("div");
-      capsuleCardEl.className = "cell auto";
+      capsuleCardEl.className = "cell";
       capsuleCardEl.innerHTML = (
         `
-        <div class="card">
-          <!-- insert the band name -->
-          <div class="card-header">
-            <h4>${artist.name}</h4>
-          </div>
-          <!-- insert the band image -->
-          <div class="band-image">
-            <img src="${artist.thumb}" alt="" />
-          </div>
-          <!-- insert the band info -->
+          <div class="card">
           <div class="card-section">
-            ${Math.round(artist.similarityIndex * 100)}% similar to ${this.name}. ${artist.genre} band from ${artist.origin}. They play a ${artist.style} sound with a ${artist.mood} mood.
-          </div>
-          <div class="buttons">
-            <!-- play button -->
-            <button type="button" class="navigation-btn">
-              <a href="${artist.lastFmUrl}" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-                </svg>
-              </a>
-            </button>
-            <!-- explore button -->
-            <button type="button" onclick="searchArtist('${artist.name}', true, true)" class="navigation-btn">
-              <a><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-node-plus" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M11 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM6.025 7.5a5 5 0 1 1 0 1H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025zM11 5a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 11 5zM1.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
-              </svg></a>
-            </button>
+            <!-- insert the band name -->
+            <div class="card-header">
+              <h4>${artist.name}</h4>
+            </div>
+            <!-- insert the band image -->
+            <div class="band-image">
+              <img src="${artist.thumb}" alt="" />
+            </div>
+            <!-- insert the band info -->
+            <div class="card-section">
+              ${Math.round(artist.similarityIndex * 100)}% similar to ${this.name}. ${artist.genre} band from ${artist.origin}. They play a ${artist.style} sound with a ${artist.mood} mood.
+            </div>
+            <div class="buttons">
+              <!-- play button -->
+              <button type="button" class="navigation-btn">
+                <a href="${artist.lastFmUrl}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                  </svg>
+                </a>
+              </button>
+              <!-- explore button -->
+              <button type="button" onclick="searchArtist('${artist.name}', true, true)" class="navigation-btn">
+                <a><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-node-plus" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M11 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM6.025 7.5a5 5 0 1 1 0 1H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025zM11 5a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 11 5zM1.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
+                </svg></a>
+              </button>
+            </div>
           </div>
         </div>
         `
