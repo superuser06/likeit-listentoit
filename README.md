@@ -14,10 +14,15 @@ A website that allows users to search for music they like and which will show si
 * Bootstrap Icons
 
 ## Screenshot
-![Screenshot](https://github.com/superuser06/likeit-listentoit/blob/develop/assets/images/Screenshot.jpg?raw=true)
+![Screenshot](./assets/images/likeit-listentoit.gif)
 
 ## Website
 https://superuser06.github.io/likeit-listentoit/
 
 ## Contribution
 Made with ❤️ by Team6
+* Kyle Baylis
+* Palak Devgan
+* Luiz Medina
+* Sultan Siddiqi
+* Deiondrae Small
