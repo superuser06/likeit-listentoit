@@ -254,9 +254,9 @@ h4 {
         font-size: 300%;
     }
 }
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 40em) {
     .grid-margin-y {
-        margin-top: 10rem;
+        margin-top: 5rem;
     }
 }
 
