@@ -79,6 +79,7 @@ label {
     font-size: larger;
 }
 
+
 input {
     font-family: 'Josefin Slab', serif !important;
     color: black;
@@ -112,6 +113,7 @@ a.pure-button-primary:hover {
 .pure-menu.pure-menu-fixed {
     border-bottom: none;
 }
+
 
 .home-menu .pure-menu-heading {
     color: white;
@@ -195,6 +197,7 @@ h4 {
 .card {
     background-color: #2e3f50;
     color: white;    
+    height: 100%;
 }
 
 .buttons {
@@ -251,3 +254,9 @@ h4 {
         font-size: 300%;
     }
 }
+@media screen and (min-width: 40em) {
+    .grid-margin-y {
+        margin-top: 8rem;
+    }
+}
+
